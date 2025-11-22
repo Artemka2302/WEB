@@ -1,0 +1,98 @@
+* {
+    font-family: 'Roboto', Arial, sans-serif;
+    box-sizing: border-box;
+}
+    
+
+.header {
+    margin: 20px;
+    padding: 30px;
+    font-weight: 700;
+    font-size: 30px;
+    text-align: center;
+    background-color: #f8f9fa;
+}
+
+.nav a{
+    color: black;
+    text-decoration: none;
+    margin-right: 25px;
+    font-size: 26px;
+    font-weight: 500;
+    font-family: 'Roboto', Arial, sans-serif;
+    text-align: center;
+
+}
+.nav a:hover{
+    color: orange;
+}
+
+.main{
+    margin-left: 20px;
+    padding-left: 30px;
+}
+.main h2{
+    font-size: 35px;
+    font-weight:700;
+
+}
+
+.main p{
+    font-size: 18px;
+    color: black;
+    font-weight: 400;
+    font-size: 23px;
+}
+
+.main img{
+    width: 800px;
+    height:auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 15px 0;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-size: 20px;
+}
+
+th {
+    background-color: #f5f5f5;
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.main li{
+        font-size: 18px;
+    color: black;
+    font-weight: 400;
+    font-size: 23px;
+}
+footer{
+    background-color: black;
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+
+}
+footer p{
+    margin-bottom: 10px;
+    font-size: 1rem;
+
+}
+footer a{
+    text-decoration: none;
+    color:white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+
+}
+footer a:hover{
+    color: orange;
+}
