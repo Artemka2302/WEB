@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Construct - Собрать ланч</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/lunch.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Food Construct</h1>
+        <nav class="nav">
+            <a href="index.html">О нас</a>
+            <a href="lunch.html" id="active">Собрать ланч</a>
+            <a href="">Заказы</a>
+            <a href="#cont">Контакты</a>
+        </nav>
+    </header>
+
+    <main class="main">
+        <!-- Блок с супами -->
+        <section>
+            <h2>Выберите суп</h2>
+            <div class="filters">
+                <button class="filter-btn" data-kind="all" data-category="soup">Все</button>
+                <button class="filter-btn" data-kind="fish" data-category="soup">рыбный</button>
+                <button class="filter-btn" data-kind="meat" data-category="soup">мясной</button>
+                <button class="filter-btn" data-kind="veg" data-category="soup">вегетарианский</button>
+            </div>
+            <div class="dishes-grid">
+                <!-- Супы будут добавлены через JavaScript -->
+            </div>
+        </section>
+
+        <!-- Блок с главными блюдами -->
+        <section>
+            <h2>Выберите главное блюдо</h2>
+            <div class="filters">
+                <button class="filter-btn" data-kind="all" data-category="main_course">Все</button>
+                <button class="filter-btn" data-kind="fish" data-category="main_course">рыбное</button>
+                <button class="filter-btn" data-kind="meat" data-category="main_course">мясное</button>
+                <button class="filter-btn" data-kind="veg" data-category="main_course">вегетарианское</button>
+            </div>
+            <div class="dishes-grid">
+                <!-- Главные блюда будут добавлены через JavaScript -->
+            </div>
+        </section>
+
+        <!-- Блок с салатами и стартерами -->
+        <section>
+            <h2>Выберите салат или стартер</h2>
+            <div class="filters">
+                <button class="filter-btn" data-kind="all" data-category="salad">Все</button>
+                <button class="filter-btn" data-kind="fish" data-category="salad">рыбный</button>
+                <button class="filter-btn" data-kind="meat" data-category="salad">мясной</button>
+                <button class="filter-btn" data-kind="veg" data-category="salad">вегетарианский</button>
+            </div>
+            <div class="dishes-grid">
+                <!-- Салаты и стартеры будут добавлены через JavaScript -->
+            </div>
+        </section>
+
+        <!-- Блок с напитками -->
+        <section>
+            <h2>Выберите напиток</h2>
+            <div class="filters">
+                <button class="filter-btn" data-kind="all" data-category="beverage">Все</button>
+                <button class="filter-btn" data-kind="cold" data-category="beverage">холодный</button>
+                <button class="filter-btn" data-kind="hot" data-category="beverage">горячий</button>
+            </div>
+            <div class="dishes-grid">
+                <!-- Напитки будут добавлены через JavaScript -->
+            </div>
+        </section>
+
+        <!-- Блок с десертами -->
+        <section>
+            <h2>Выберите десерт</h2>
+            <div class="filters">
+                <button class="filter-btn" data-kind="all" data-category="dessert">Все</button>
+                <button class="filter-btn" data-kind="small" data-category="dessert">маленькая порция</button>
+                <button class="filter-btn" data-kind="medium" data-category="dessert">средняя порция</button>
+                <button class="filter-btn" data-kind="large" data-category="dessert">большая порция</button>
+            </div>
+            <div class="dishes-grid">
+                <!-- Десерты будут добавлены через JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <div class="order-block">
+        <h2>Сделать заказ</h2>
+        <form class="order-form" method="post" action="https://httpbin.org/post">
+            <div class="form-section">
+                <h3>Ваш заказ</h3>
+                 <div id="dynamic-order">
+                    <p>Ничего не выбрано</p>
+                </div>
+                
+                <!-- Поле комментария (всегда видно) -->
+                <label for="comment">Комментарий</label>
+                <textarea id="comment" name="comment"></textarea>
+            </div>
+            
+            <div class="form-section">
+                <h3>Данные клиента</h3>
+                
+                <!-- Имя - обязательное текстовое поле -->
+                <label for="name">Имя</label>
+                <input type="text" id="name" name="name" required>
+                
+                <!-- Email - обязательное поле типа email -->
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                
+                <!-- Чекбокс подписки - выбран по умолчанию -->
+                <div class="checkbox-group">
+                <input type="checkbox" id="subscription" name="subscription" checked>
+                <label for="subscription">Подписаться на рассылку</label>
+                </div>
+                <div class="delivery-notice">
+                Доставка осуществляется только по Москве
+            </div>
+                <!-- Телефон - обязательное поле типа tel -->
+                <label for="phone">Телефон</label>
+                <input type="tel" id="phone" name="phone" required>
+                
+                <!-- Адрес - обязательное текстовое поле -->
+                <label for="address">Адрес</label>
+                <input type="text" id="address" name="address" required>
+                
+                <!-- Переключатель времени доставки - обязательный -->
+                <div class="radio-option">
+                <input type="radio" id="time-asap" name="delivery_time">
+                <label for="time-asap">Как можно скорее</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" id="time-specific" name="delivery_time">
+                <label for="time-specific">К указанному времени</label>
+            </div>
+                
+                <!-- Поле времени - с ограничениями -->
+                <label for="delivery-time">Время доставки</label>
+                <input type="time" id="delivery-time" name="delivery_time_value" min="07:00" max="23:00" step="300">
+                <div class="delivery-notice">
+                Доступное время доставки с 7:00 до 23:00
+                </div>
+            <div class="form-buttons">
+                <!-- Кнопки -->
+                <button type="reset">Сбросить</button>
+                <button type="submit">Отправить</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <footer id="cont">
+        <p>Phone: <a href="tel:+79999999999">+7 (999) 999 99 99</a></p>
+        <p>Mail: <a href="mailto:vasellevartem538@gmail.com">vasellevartem538@gmail.com</a></p>
+        <p>Адрес: Москва, Прянишникова 2А</p>
+    </footer>
+
+    <!-- Подключаем JavaScript файлы -->
+    <script src="JS/dishes-data.js"></script>
+    <script src="JS/display-dishes.js"></script>
+    <script src="JS/order-handler.js"></script>
+    <script src="JS/filters.js"></script>
+</body>
+</html>
