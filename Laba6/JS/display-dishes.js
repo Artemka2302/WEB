@@ -14,13 +14,14 @@ function createDishCard(dish) {
 // Функция для отображения блюд по категориям
 function displayDishesByCategory(filterKind = 'all', category = null) {
     // Определяем все секции
-    const sections = [
-        { category: 'soup', element: document.querySelector('section:nth-child(1) .dishes-grid') },
-        { category: 'main_course', element: document.querySelector('section:nth-child(2) .dishes-grid') },
-        { category: 'salad', element: document.querySelector('section:nth-child(3) .dishes-grid') },
-        { category: 'beverage', element: document.querySelector('section:nth-child(4) .dishes-grid') },
-        { category: 'dessert', element: document.querySelector('section:nth-child(5) .dishes-grid') }
-    ];
+    // Теперь у вас 6 секций: сначала блок с вариантами, потом 5 категорий
+const sections = [
+    { category: 'soup', element: document.querySelector('section:nth-child(2) .dishes-grid') },
+    { category: 'main_course', element: document.querySelector('section:nth-child(3) .dishes-grid') },
+    { category: 'salad', element: document.querySelector('section:nth-child(4) .dishes-grid') },
+    { category: 'beverage', element: document.querySelector('section:nth-child(5) .dishes-grid') },
+    { category: 'dessert', element: document.querySelector('section:nth-child(6) .dishes-grid') }
+];
 
     // Если передана конкретная категория, обновляем только её
     if (category) {
