@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Test</title>
+</head>
+<body>
+    <h1>Простой тест API заказов</h1>
+    <div id="result"></div>
+    
+    <script>
+        const API_KEY = "32342745-3e72-4fcc-8f7a-a5a0c1703144";
+        const ORDERS_API_URL = "https://edu.std-900.ist.mospolytech.ru/labs/api/orders";
+        
+        async function test() {
+            const resultDiv = document.getElementById('result');
+            
+            try {
+                // Тест 1: Получить заказы
+                resultDiv.innerHTML = '<h3>Тестируем получение заказов...</h3>';
+                
+                const response = await fetch(`${ORDERS_API_URL}?api_key=${API_KEY}`);
+                resultDiv.innerHTML += `<p>Статус: ${response.status} ${response.statusText}</p>`;
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.innerHTML += `<p>✅ Успешно! Заказов: ${data.length}</p>`;
+                    
+                    if (data.length > 0) {
+                        data.forEach(order => {
+                            resultDiv.innerHTML += `
+                                <div style="border:1px solid #ccc; margin:10px; padding:10px;">
+                                    <strong>Заказ #${order.id}</strong><br>
+                                    Имя: ${order.full_name}<br>
+                                    Дата: ${order.created_at}<br>
+                                    Сумма: ${order.total_price} руб.
+                                </div>
+                            `;
+                        });
+                    } else {
+                        resultDiv.innerHTML += `<p>📝 У вас пока нет заказов.</p>`;
+                        resultDiv.innerHTML += `<p>Для теста создайте заказ через order.html</p>`;
+                    }
+                } else {
+                    const error = await response.text();
+                    resultDiv.innerHTML += `<p>❌ Ошибка: ${error}</p>`;
+                }
+                
+            } catch (error) {
+                resultDiv.innerHTML += `<p>❌ Сетевая ошибка: ${error.message}</p>`;
+            }
+        }
+        
+        test();
+    </script>
+</body>
+</html>

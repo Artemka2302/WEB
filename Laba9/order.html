@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Construct - Оформить заказ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/lunch.css">
+    <link rel="stylesheet" href="styles/order.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Food Construct</h1>
+        <nav class="nav">
+            <a href="index.html">О нас</a>
+            <a href="lunch.html">Собрать ланч</a>
+            <a href="order.html" id="active">Оформить заказ</a>
+            <a href="orders.html">Заказы</a>
+            <a href="#cont">Контакты</a>
+        </nav>
+    </header>
+
+    <main class="main">
+        <div class="order-page-container">
+            <!-- Раздел 1: Состав заказа -->
+            <section class="order-composition">
+                <h2>Состав заказа</h2>
+                <div id="order-items-container">
+                    <div class="empty-order-message">
+                        <p>Ничего не выбрано. Чтобы добавить блюда в заказ, перейдите на страницу</p>
+                        <p><a href="lunch.html">Собрать ланч</a></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Раздел 2: Форма оформления -->
+            <section class="order-form-section">
+                <h2>Оформление заказа</h2>
+                
+                <form class="order-form" method="post" id="order-form">
+                    <div class="form-section">
+                        <h3>Ваш заказ</h3>
+                        <div id="dynamic-order">
+                            <p>Ничего не выбрано</p>
+                        </div>
+                        
+                        <label for="comment">Комментарий к заказу</label>
+                        <textarea id="comment" name="comment" placeholder="Ваши пожелания..."></textarea>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Данные для доставки</h3>
+                        
+                        <label for="name">Имя и фамилия *</label>
+                        <input type="text" id="name" name="name" required placeholder="Иван Иванов">
+                        
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required placeholder="example@mail.ru">
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="subscription" name="subscribe" checked>
+                            <label for="subscription">Подписаться на рассылку</label>
+                        </div>
+                        
+                        <div class="delivery-notice">
+                            Доставка осуществляется только по Москве
+                        </div>
+                        
+                        <label for="phone">Телефон *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+7 (999) 999-99-99">
+                        
+                        <label for="address">Адрес доставки *</label>
+                        <input type="text" id="address" name="delivery_address" required placeholder="ул. Примерная, д. 1, кв. 1">
+                        
+                        <label>Время доставки *</label>
+                        <div class="radio-option">
+                            <input type="radio" id="time-asap" name="delivery_type" value="now">
+                            <label for="time-asap">Как можно скорее</label>
+                        </div>
+
+                        <div class="radio-option">
+                            <input type="radio" id="time-specific" name="delivery_type" value="by_time">
+                            <label for="time-specific">К указанному времени</label>
+                        </div>
+                        
+                        <label for="delivery-time">Выберите время (если нужно)</label>
+                        <input type="time" id="delivery-time" name="delivery_time" min="07:00" max="23:00" step="300">
+                        <div class="delivery-notice">
+                            Доступное время доставки с 7:00 до 23:00
+                        </div>
+                        
+                        <div class="form-buttons">
+                            <button type="button" id="clear-order">Очистить заказ</button>
+                            <button type="submit">Отправить заказ</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer id="cont">
+        <p>Phone: <a href="tel:+79999999999">+7 (999) 999 99 99</a></p>
+        <p>Mail: <a href="mailto:vasellevartem538@gmail.com">vasellevartem538@gmail.com</a></p>
+        <p>Адрес: Москва, Прянишникова 2А</p>
+    </footer>
+
+    <script src="JS/load-dishes.js"></script>
+<script src="JS/dishes-data.js"></script>
+<script src="JS/display-dishes.js"></script>
+<script src="JS/order-handler.js"></script>
+<script src="JS/filters.js"></script>
+<script src="JS/order-validation.js"></script>
+<script src="JS/order-page.js"></script>
+<script src="JS/combo-validation.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+            initDishes();
+        }, 500);
+    });
+</script>
+</body>
+</html>

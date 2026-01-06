@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test CORS</title>
+</head>
+<body>
+    <h1>Testing CORS Access</h1>
+    <div id="result"></div>
+    
+    <script>
+        const API_KEY = "32342745-3e72-4fcc-8f7a-a5a0c1703144";
+        const resultDiv = document.getElementById('result');
+        
+        async function testCORS() {
+            const urls = [
+                `https://edu.std-900.ist.mospolytech.ru/labs/api/dishes?key=${API_KEY}`,
+                `https://edu.std-900.ist.mospolytech.ru/labs/api/orders?key=${API_KEY}`,
+                `https://edu.std-900.ist.mospolytech.ru/api/orders?key=${API_KEY}`,
+                `http://lab8-api.std-900.ist.mospolytech.ru/labs/api/orders?key=${API_KEY}`
+            ];
+            
+            for (const url of urls) {
+                try {
+                    resultDiv.innerHTML += `<h3>Testing: ${url}</h3>`;
+                    
+                    const response = await fetch(url, {
+                        mode: 'cors'
+                    });
+                    
+                    resultDiv.innerHTML += `<p>Status: ${response.status} ${response.statusText}</p>`;
+                    
+                    if (response.ok) {
+                        const data = await response.json();
+                        resultDiv.innerHTML += `<p>Success! Data length: ${Array.isArray(data) ? data.length : 'N/A'}</p>`;
+                    }
+                } catch (error) {
+                    resultDiv.innerHTML += `<p>Error: ${error.message}</p>`;
+                }
+                resultDiv.innerHTML += '<hr>';
+            }
+        }
+        
+        testCORS();
+    </script>
+</body>
+</html>
